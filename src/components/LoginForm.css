@@ -1,0 +1,50 @@
+/* LoginForm.css */
+
+/* General form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between input fields and button */
+    max-width: 400px; /* Restrict the form width */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+/* Input fields styling */
+input {
+    width: 100%; /* Full width relative to the parent */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+/* Button styling */
+button {
+    width: 100%; /* Same width as inputs */
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #2980b9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+/* Label styling */
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Wrapper for input fields */
+div {
+    display: flex;
+    flex-direction: column;
+}
