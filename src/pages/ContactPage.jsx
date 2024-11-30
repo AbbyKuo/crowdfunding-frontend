@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ContactPage.css';
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -37,6 +38,13 @@ const ContactPage = () => {
 
     return (
         <div>
+            <Hero
+                title="Get in Touch"
+                subtitle="We'd love to hear from you. Reach out to us today!"
+                image=""
+                buttonLabel="Go Home"
+                buttonLink="/"
+            />
             <div className="contact-container">
                 <h1>Contact Us</h1>
                 <p>Have questions or feedback? Fill out the form below to get in touch!</p>

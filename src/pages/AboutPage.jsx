@@ -1,10 +1,18 @@
 import React from 'react';
 import "./AboutPage.css";
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
 
 const AboutPage = () => {
     return (
         <div>
+            <Hero 
+                title="About Us"
+                subtitle="Learn about our mission and how we're changing lives through books."
+                image=""
+                buttonLabel="Contact Us"
+                buttonLink="/contact"
+            />
             <main className="about-container">
                 <h1>About Us</h1>
                 <p>

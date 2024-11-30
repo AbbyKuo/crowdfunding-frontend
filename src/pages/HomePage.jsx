@@ -10,7 +10,13 @@ function HomePage() {
 
     return (
         <div>
-            <Hero />
+            <Hero
+                title="Welcome to BookWish"
+                subtitle="Empowering communities through the gift of books."
+                image=""
+                buttonLabel="Learn More About Us"
+                buttonLink="/about"
+            />
             <div id="project-list">
             {projects.map((projectData, key) => {
                 return <ProjectCard key={key} projectData={projectData} />; 
