@@ -1,0 +1,29 @@
+/* LoginPage.css */
+
+/* Wrapper for the LoginForm */
+.login-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9; /* Matches page background */
+}
+
+/* Container for the LoginForm */
+.login-form-container {
+    background-color: white;
+    width: 100%;
+    max-width: 400px; /* Restrict form width */
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow */
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Form Title */
+.login-form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
