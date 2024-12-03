@@ -10,7 +10,6 @@ function NavBar() {
                 <Link to="/contact">Contact Us</Link>
                 <Link to="/login">Log In</Link>
             </nav>
-            <Outlet />
         </div>
     );
 }
