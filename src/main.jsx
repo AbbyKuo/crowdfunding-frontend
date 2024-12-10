@@ -9,11 +9,12 @@ import ContactPage from "./pages/ContactPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 
 import NavBar from "./components/NavBar.jsx";
+import Header from "./components/Header.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <NavBar />,
+    element: <Header />,
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/project/:id", element: <ProjectPage />},
