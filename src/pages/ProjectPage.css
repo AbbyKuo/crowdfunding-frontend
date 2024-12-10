@@ -73,6 +73,42 @@
     color: #555;
 }
 
+.project-pledges form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-pledges input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.project-pledges button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.project-pledges button:hover {
+    background-color: #3498db;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .project-page-container {

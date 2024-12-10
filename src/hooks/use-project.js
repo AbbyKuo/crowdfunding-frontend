@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react";
-
 import getProject from "../api/get-project";
 
-export default function useProject(projectId) {
-    const [project, setProject] = useState();
+export default function useProject(id) {
+    const [project, setProject] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState();
+    const [error, setError] = useState(null);
+
+    const fetchProject = async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            const data = await getProject(id);
+            setProject(data);
+        } catch (err) {
+            setError(err);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
-        // Here we pass the projectId to the getProject function.
-        getProject(projectId)
-        .then((project) => {
-            setProject(project);
-            setIsLoading(false);
-        })
-        .catch((error) => {
-            setError(error);
-            setIsLoading(false);
-        });
+        fetchProject();
+    }, [id]);
 
-        // This time we pass the projectId to the dependency array so that the hook will re-run if the projectId changes.
-    }, [projectId]);
-
-    return { project, isLoading, error };
+    return { project, isLoading, error, refetchProject: fetchProject };
 }
