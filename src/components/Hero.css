@@ -16,6 +16,7 @@
 }
 
 .hero-content {
+    min-width: 450px;
     max-width: 800px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
