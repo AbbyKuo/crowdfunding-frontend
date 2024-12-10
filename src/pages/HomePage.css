@@ -17,3 +17,18 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 250px; /* Define a fixed width for the cards */
 }
+
+.loading-message {
+    text-align: center;
+    color: #2980b9;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+

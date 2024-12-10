@@ -2,11 +2,11 @@ import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
 import "./HomePage.css";
 import Footer from "../components/Footer";
-import Hero from "../components/Hero"
+import Hero from "../components/Hero";
 
 
 function HomePage() {
-    const { projects } = useProjects();
+    const { projects, loading, error } = useProjects();
 
     return (
         <div>
@@ -17,11 +17,19 @@ function HomePage() {
                 buttonLabel="Learn More About Us"
                 buttonLink="/about"
             />
-            <div id="project-list">
+            {/* <div id="project-list">
             {projects.map((projectData, key) => {
                 return <ProjectCard key={key} projectData={projectData} />; 
             })}
+            </div> */}
+            <div id="project-list">
+                {loading && <p className="loading-message">Loading projects...</p>}
+                {error && <p className="error-message">Failed to load projects. Please try again later.</p>}
+                {!loading && !error && projects.map((projectData, key) => {
+                    return <ProjectCard key={key} projectData={projectData} />;
+                })}
             </div>
+
             <Footer />
         </div>
         
