@@ -3,6 +3,7 @@ import ProjectCard from "../components/ProjectCard";
 import "./HomePage.css";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import ProjectForm from "../components/ProjectForm";
 
 
 function HomePage() {
@@ -28,6 +29,10 @@ function HomePage() {
                 {!loading && !error && projects.map((projectData, key) => {
                     return <ProjectCard key={key} projectData={projectData} />;
                 })}
+            </div>
+                
+            <div>
+                <ProjectForm />
             </div>
 
             <Footer />
