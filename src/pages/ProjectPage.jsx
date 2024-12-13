@@ -80,7 +80,7 @@ function ProjectPage() {
                             <input
                                 type="text"
                                 value={comment}
-                                onChange={(e) => setPledgeAmount(Number(e.target.value))}
+                                onChange={(e) => setComment(e.target.value)}
                                 placeholder="Leave a comment"
                             />
                             <button type="submit" disabled={pledging}>
