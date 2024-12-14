@@ -3,6 +3,7 @@ import ProjectCard from "../components/ProjectCard";
 import "./HomePage.css";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import { Link } from "react-router-dom";
 
 function HomePage() {
     const { projects, loading, error } = useProjects();
@@ -26,6 +27,17 @@ function HomePage() {
                     })}
                 </div>
             </div>
+            
+            <div className="cta-section">
+                <div className="cta-content">
+                    <h2>Ready to Make a Difference?</h2>
+                    <p>Learn more about the communities we support and how your contribution can help bring books and knowledge to those who need it most.</p>
+                    <Link to="/about" className="cta-button">
+                        Meet Our Communities
+                    </Link>
+                </div>
+            </div>
+            
             <Footer />
         </div>
     );
