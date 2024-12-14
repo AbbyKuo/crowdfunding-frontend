@@ -44,56 +44,88 @@ function ProjectPage() {
     return (
         <div>
             <div className="project-page-container">
-                {/* Left Column: Project Details */}
-                <div className="project-details">
-                    <h2>{project.title}</h2>
-                    <h3>Created at: {project.date_created}</h3>
-                    <h3>{`Status: ${project.is_open ? "Open" : "Closed"}`}</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Vivamus luctus eros aliquet convallis ultricies.
-                    </p>
+                {/* Project Header Section */}
+                <div className="project-header">
+                    <div className="project-title-section">
+                        <h2>{project.title}</h2>
+                        <div className="project-meta">
+                            <span>Created {project.date_created}</span>
+                            <span className={`project-status ${project.is_open ? 'open' : 'closed'}`}>
+                                {project.is_open ? "Active" : "Closed"}
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Right Column: Pledges */}
-                <div className="project-pledges">
-                    <h3>Pledges</h3>
+                {/* Main Content Section */}
+                <div className="project-content">
+                    {/* Left Column: Project Details */}
+                    <div className="project-details">
+                        <div className="project-image-container">
+                            {project.image ? (
+                                <img 
+                                    src={project.image} 
+                                    alt={project.title}
+                                    className="project-image"
+                                />
+                            ) : (
+                                <div className="project-image-placeholder">
+                                    No image available
+                                </div>
+                            )}
+                        </div>
+                        <div className="project-description">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                Vivamus luctus eros aliquet convallis ultricies.
+                            </p>
+                        </div>
+                        
+                        {/* Pledge Form moved to left column */}
+                        {project.is_open && (
+                            <div className="pledge-form-container">
+                                <form onSubmit={handlePledge}>
+                                    <h4>Make a Pledge</h4>
+                                    {pledgeError && <p className="error-message">{pledgeError}</p>}
+                                    <div className="pledge-inputs">
+                                        <input
+                                            type="number"
+                                            value={pledgeAmount}
+                                            onChange={(e) => setPledgeAmount(Number(e.target.value))}
+                                            min="1"
+                                            placeholder="Number of books"
+                                            required
+                                        />
+                                        <input
+                                            type="text"
+                                            value={comment}
+                                            onChange={(e) => setComment(e.target.value)}
+                                            placeholder="Leave a comment"
+                                        />
+                                        <button type="submit" disabled={pledging}>
+                                            {pledging ? "Pledging..." : "Pledge Now"}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        )}
+                    </div>
 
-                    <ul>
-                        {project.pledges.map((pledgeData, key) => (
-                            <li key={key}>
-                                {pledgeData.amount} books from {pledgeData.supporter_username}
-                                {pledgeData.comment && (
-                                    <p className="pledge-comment">"{pledgeData.comment}"</p>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-
-                    {/* Pledge Form */}
-                    {project.is_open && (
-                        <form onSubmit={handlePledge}>
-                            <h4>Make a Pledge</h4>
-                            {pledgeError && <p className="error-message">{pledgeError}</p>}
-                            <input
-                                type="number"
-                                value={pledgeAmount}
-                                onChange={(e) => setPledgeAmount(Number(e.target.value))}
-                                min="1"
-                                placeholder="Number of books"
-                                required
-                            />
-                            <input
-                                type="text"
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                                placeholder="Leave a comment"
-                            />
-                            <button type="submit" disabled={pledging}>
-                                {pledging ? "Pledging..." : "Pledge"}
-                            </button>
-                        </form>
-                    )}
+                    {/* Right Column: Pledges */}
+                    <div className="project-pledges">
+                        <h3>Recent Pledges</h3>
+                        <div className="pledges-list">
+                            {project.pledges.map((pledgeData, key) => (
+                                <div key={key} className="pledge-card">
+                                    <div className="pledge-amount">{pledgeData.amount} books</div>
+                                    <div className="pledge-supporter">from {pledgeData.supporter_username}</div>
+                                    {pledgeData.comment && (
+                                        <p className="pledge-comment">"{pledgeData.comment}"</p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
             <Footer />
