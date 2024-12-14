@@ -64,8 +64,8 @@
 
 .project-pledges ul li {
     background-color: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -107,7 +107,12 @@
     font-size: 0.9rem;
 }
 
-
+.pledge-comment {
+    font-style: italic;
+    color: #666;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

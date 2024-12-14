@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useProject from "../hooks/use-project";
 import postPledge from "../api/post-pledge";
 import Footer from "../components/Footer";
 import "./ProjectPage.css";
+
+
 
 function ProjectPage() {
     const { id } = useParams(); // Get the project ID from URL
@@ -56,10 +58,14 @@ function ProjectPage() {
                 {/* Right Column: Pledges */}
                 <div className="project-pledges">
                     <h3>Pledges</h3>
+
                     <ul>
                         {project.pledges.map((pledgeData, key) => (
                             <li key={key}>
-                                {pledgeData.amount} books from {pledgeData.supporter}
+                                {pledgeData.amount} books from {pledgeData.supporter_username}
+                                {pledgeData.comment && (
+                                    <p className="pledge-comment">"{pledgeData.comment}"</p>
+                                )}
                             </li>
                         ))}
                     </ul>
