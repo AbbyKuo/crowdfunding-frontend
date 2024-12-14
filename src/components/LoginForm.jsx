@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import postLogin from "../api/post-login.js";
-import "./LoginForm.css";
 import useAuth from "../hooks/use-auth.js";
+import "./LoginForm.css";
 
 function LoginForm() {
-    const navigate = useNavigate(); 
-    const {auth, setAuth} = useAuth();
+    const navigate = useNavigate();
+    const { auth, setAuth } = useAuth();
     
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
     const [credentials, setCredentials] = useState({
-            username: "",
-            password: "",
-        });
-        
+        username: "",
+        password: "",
+    });
+
     const handleChange = (event) => {
         const { id, value } = event.target;
         setCredentials((prevCredentials) => ({
@@ -32,7 +31,7 @@ function LoginForm() {
             return;
         }
 
-        setLoading(true)
+        setLoading(true);
         postLogin(credentials.username, credentials.password)
             .then((response) => {
                 window.localStorage.setItem("token", response.token);
@@ -41,52 +40,57 @@ function LoginForm() {
                 });
                 navigate(location.state?.from || "/"); // Redirect to previous page or home
             })
-            .catch(()=> {
+            .catch(() => {
                 setError("Invalid username or password.");
                 setLoading(false);
             });
     };
 
-    // catch() js promise.then
-
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Login</h1>
-            {error && <p className="error-message">{error}</p>}
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter username"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <div>
+        <div className="login-container">
+            <h1>Log in</h1>
+            <p className="login-subtitle">See your lifetime impact and manage your account settings.</p>
+            
+            <form onSubmit={handleSubmit}>
+                {error && <p className="error-message">{error}</p>}
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
                     <input
-                        type={showPassword ? "text" : "password"}
-                        id="password"
-                        placeholder="Enter password"
+                        type="text"
+                        id="username"
+                        value={credentials.username}
                         onChange={handleChange}
+                        placeholder="Enter username"
+                        required
                     />
-                    <button
-                        type="button"
-                        onClick={() => setShowPassword((prev) => !prev)}
-                        style={{ marginTop: "10px" }}
-                    >
-                        {showPassword ? "Hide Password" : "Show Password"}
-                    </button>
                 </div>
-            </div>
-            <button type="submit" disabled={loading}>
-                {loading ? "Loading..." : "Login"}
-            </button>
-            <div>
-                <a href="/forgot-password">Forgot Password?</a>
-            </div>
-        </form>
+                
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                        placeholder="Enter password"
+                        required
+                    />
+                </div>
+
+                <button type="submit" className="login-button" disabled={loading}>
+                    {loading ? "Loading..." : "Log in"}
+                </button>
+                
+                <div className="login-links">
+                    <Link to="/forgot-password" className="forgot-password">
+                        Forgot password?
+                    </Link>
+                    <Link to="/signup" className="signup-link">
+                        Not registered? Join our community!
+                    </Link>
+                </div>
+            </form>
+        </div>
     );
 }
 

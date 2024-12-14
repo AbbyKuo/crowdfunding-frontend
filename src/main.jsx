@@ -8,6 +8,7 @@ import AboutPage from "./pages/AboutPage.jsx"
 import ContactPage from "./pages/ContactPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import CreateProjectPage from "./pages/CreateProjectPage";
+import SignupPage from "./pages/SignupPage";
 
 import Header from "./components/Header.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "/contact", element: <ContactPage />},
       { path: "/login", element: <LoginPage />},
       { path: "/create-project", element: <CreateProjectPage />},
+      { path: "/signup", element: <SignupPage /> },
     ],
   },
 ]);
