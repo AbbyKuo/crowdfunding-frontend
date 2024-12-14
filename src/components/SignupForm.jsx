@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./SignupForm.css";
 
 function SignupForm() {
@@ -119,6 +119,10 @@ function SignupForm() {
                 <button type="submit" className="signup-button" disabled={loading}>
                     {loading ? "Signing up..." : "Sign Up"}
                 </button>
+
+                <div className="login-link">
+                    Already have an account? <Link to="/login">Log in</Link>
+                </div>
             </form>
         </div>
     );
