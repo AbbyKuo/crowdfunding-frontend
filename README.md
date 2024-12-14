@@ -96,7 +96,7 @@ A link to the deployed front-end  [BookWish](https://bookwish-crowdfunding.netli
 
 ### Project Creation Page
 
-![Screenshot 2](./public/screenshot2.png)
+![project_creation](./public/images/screenshots/project_creation.gif)
 
 ### Pledge Creation Form
 
@@ -108,4 +108,4 @@ A link to the deployed front-end  [BookWish](https://bookwish-crowdfunding.netli
 
 ### Unauthorised User Attempt to Pledge to Project
 
-![Screenshot 5](./public/screenshot5.png)
+![unauthorised_pledge](./public/images/screenshots/unauthorised_pledge.gif)
