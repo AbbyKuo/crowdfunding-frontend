@@ -12,13 +12,14 @@ function ProjectForm() {
         goal: "",
         image: "",
         is_open: true,
+        date_created: new Date().toISOString(),
     });
 
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
-            [id]: value,
+            [id]: id === "goal" ? parseInt(value) || "" : value,
         }));
     };
 
@@ -27,11 +28,28 @@ function ProjectForm() {
         setIsLoading(true);
         setErrorMessage("");
 
+        if (!formData.title || !formData.description || !formData.goal) {
+            setErrorMessage("Please fill in all required fields");
+            setIsLoading(false);
+            return;
+        }
+
+        const projectData = {
+            ...formData,
+            goal: parseInt(formData.goal),
+            image: formData.image || null,
+        };
+
         try {
-            const response = await postProject(formData);
-            navigate(`/project/${response.id}`);
+            const response = await postProject(projectData);
+            if (response.id) {
+                navigate(`/project/${response.id}`);
+            } else {
+                throw new Error("Failed to create project");
+            }
         } catch (err) {
-            setErrorMessage(err.message);
+            console.error("Error creating project:", err);
+            setErrorMessage(err.message || "Failed to create project. Please try again.");
         } finally {
             setIsLoading(false);
         }
@@ -42,7 +60,7 @@ function ProjectForm() {
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             
             <div className="form-group">
-                <label htmlFor="title">Project Title</label>
+                <label htmlFor="title">Project Title*</label>
                 <input
                     type="text"
                     id="title"
@@ -54,7 +72,7 @@ function ProjectForm() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="description">Description*</label>
                 <textarea
                     id="description"
                     value={formData.description}
@@ -65,7 +83,7 @@ function ProjectForm() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="goal">Goal (Number of Books)</label>
+                <label htmlFor="goal">Goal (Number of Books)*</label>
                 <input
                     type="number"
                     id="goal"
@@ -78,7 +96,7 @@ function ProjectForm() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="image">Image URL</label>
+                <label htmlFor="image">Image URL (Optional)</label>
                 <input
                     type="url"
                     id="image"
