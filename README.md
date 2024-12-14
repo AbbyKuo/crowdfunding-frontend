@@ -92,7 +92,7 @@ A link to the deployed front-end  [BookWish](https://bookwish-crowdfunding.netli
 
 ### Home Page
 
-![Screenshot 1](./public/screenshot1.png)
+![HomePage](./public/images/screenshots/HomePage.gif)
 
 ### Project Creation Page
 
