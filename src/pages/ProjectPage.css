@@ -8,12 +8,14 @@
     margin: 0 auto;
     padding: 0 20px;
     background-color: #fff;
+    margin-top: 80px;
 }
 
 /* Project Header Styles */
 .project-header {
     padding: 40px 0;
     border-bottom: 1px solid #eee;
+    margin-top: 20px;
 }
 
 .project-title-section {
