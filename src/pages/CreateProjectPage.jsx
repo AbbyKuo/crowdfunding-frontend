@@ -14,7 +14,10 @@ function CreateProjectPage() {
 
     return (
         <div className="create-project-container">
-            <h1 className="page-title">Create New Project</h1>
+            <div className="form-header">
+                <h1 className="page-title">Create New Project</h1>
+                <p>Share your book project with the community and start making an impact</p>
+            </div>
             <div className="form-container">
                 <ProjectForm />
             </div>
