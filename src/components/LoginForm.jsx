@@ -38,7 +38,7 @@ function LoginForm() {
                 setAuth({
                     token: response.token,
                 });
-                navigate(location.state?.from || "/"); // Redirect to previous page or home
+                navigate(location.state?.from || "/");
             })
             .catch(() => {
                 setError("Invalid username or password.");
@@ -78,16 +78,11 @@ function LoginForm() {
                 </div>
 
                 <button type="submit" className="login-button" disabled={loading}>
-                    {loading ? "Loading..." : "Log in"}
+                    {loading ? "Logging in..." : "Log in"}
                 </button>
                 
-                <div className="login-links">
-                    <Link to="/forgot-password" className="forgot-password">
-                        Forgot password?
-                    </Link>
-                    <Link to="/signup" className="signup-link">
-                        Not registered? Join our community!
-                    </Link>
+                <div className="signup-link">
+                    Don't have an account? <Link to="/signup">Sign up</Link>
                 </div>
             </form>
         </div>
