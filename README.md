@@ -104,12 +104,8 @@ A link to the deployed front-end  [BookWish](https://bookwish-crowdfunding.netli
 
 ### Project with Pledges
 
-![Screenshot 4](./public/screenshot4.png)
+![project_with_pledges](./public/images/screenshots/project_with_pledge.png)
 
 ### Unauthorised User Attempt to Pledge to Project
 
 ![Screenshot 5](./public/screenshot5.png)
-
-### User Dashboard
-
-![Screenshot 6](./public/screenshot6.png)
