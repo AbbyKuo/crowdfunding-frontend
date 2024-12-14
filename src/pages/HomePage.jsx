@@ -19,7 +19,7 @@ function HomePage() {
             />
             <div className="projects-section">
                 <h2 className="section-title">Current Projects</h2>
-                <div id="project-list">
+                <div className="project-list">
                     {loading && <p className="loading-message">Loading projects...</p>}
                     {error && <p className="error-message">Failed to load projects. Please try again later.</p>}
                     {!loading && !error && projects.map((projectData, key) => {
