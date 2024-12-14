@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import postSignup from "../api/post-signup.js";
 import "./SignupForm.css";
 
 function SignupForm() {
@@ -26,36 +27,38 @@ function SignupForm() {
         event.preventDefault();
         setError("");
         
+        // Validate passwords match
         if (credentials.password !== credentials.confirmPassword) {
             setError("Passwords do not match!");
             return;
         }
 
+        // Validate password length
+        if (credentials.password.length < 8) {
+            setError("Password must be at least 8 characters long");
+            return;
+        }
+
+        // Validate username length
+        if (credentials.username.length < 3) {
+            setError("Username must be at least 3 characters long");
+            return;
+        }
+
         setLoading(true);
         try {
-            const response = await fetch(
-                `${import.meta.env.VITE_API_URL}users/`,
-                {
-                    method: "post",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        username: credentials.username,
-                        email: credentials.email,
-                        password: credentials.password,
-                    }),
-                }
+            await postSignup(
+                credentials.username,
+                credentials.email,
+                credentials.password
             );
             
-            if (!response.ok) {
-                throw new Error(await response.text());
-            }
-            
+            // Show success message
+            alert("Registration successful! Please log in.");
             navigate("/login");
         } catch (err) {
             console.error(err);
-            setError("Sign up failed! Please try again.");
+            setError(err.message || "Sign up failed! Please try again.");
         } finally {
             setLoading(false);
         }
@@ -77,6 +80,7 @@ function SignupForm() {
                         onChange={handleChange}
                         placeholder="Enter username"
                         required
+                        minLength={3}
                     />
                 </div>
                 
@@ -99,8 +103,9 @@ function SignupForm() {
                         id="password"
                         value={credentials.password}
                         onChange={handleChange}
-                        placeholder="Enter password"
+                        placeholder="Enter password (min. 8 characters)"
                         required
+                        minLength={8}
                     />
                 </div>
 
