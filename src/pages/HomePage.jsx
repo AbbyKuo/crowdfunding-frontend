@@ -3,14 +3,12 @@ import ProjectCard from "../components/ProjectCard";
 import "./HomePage.css";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import ProjectForm from "../components/ProjectForm";
-
 
 function HomePage() {
     const { projects, loading, error } = useProjects();
 
     return (
-        <div>
+        <div className="home-container">
             <Hero
                 title="Welcome to BookWish"
                 subtitle="Empowering communities through the gift of books."
@@ -18,26 +16,18 @@ function HomePage() {
                 buttonLabel="Learn More About Us"
                 buttonLink="/about"
             />
-            {/* <div id="project-list">
-            {projects.map((projectData, key) => {
-                return <ProjectCard key={key} projectData={projectData} />; 
-            })}
-            </div> */}
-            <div id="project-list">
-                {loading && <p className="loading-message">Loading projects...</p>}
-                {error && <p className="error-message">Failed to load projects. Please try again later.</p>}
-                {!loading && !error && projects.map((projectData, key) => {
-                    return <ProjectCard key={key} projectData={projectData} />;
-                })}
+            <div className="projects-section">
+                <h2 className="section-title">Current Projects</h2>
+                <div id="project-list">
+                    {loading && <p className="loading-message">Loading projects...</p>}
+                    {error && <p className="error-message">Failed to load projects. Please try again later.</p>}
+                    {!loading && !error && projects.map((projectData, key) => {
+                        return <ProjectCard key={key} projectData={projectData} />;
+                    })}
+                </div>
             </div>
-                
-            <div>
-                <ProjectForm />
-            </div>
-
             <Footer />
         </div>
-        
     );
 }
 

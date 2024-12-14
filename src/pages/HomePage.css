@@ -1,21 +1,45 @@
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+}
+
 #project-list {
-    margin: 20px auto;
-    max-width: 800px;
-    font-family: Arial, sans-serif;
-    display: flex; /* Use Flexbox */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    gap: 20px; /* Add spacing between items */
-    justify-content: center; /* Center the items horizontally */
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
 }
 
 .project-card {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 15px;
-    background-color: #f9f9f9;
+    padding: 20px;
+    background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 250px; /* Define a fixed width for the cards */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .loading-message {
@@ -23,6 +47,7 @@
     color: #2980b9;
     font-size: 1.2rem;
     margin: 20px 0;
+    grid-column: 1 / -1;
 }
 
 .error-message {
@@ -30,5 +55,13 @@
     color: red;
     font-size: 1.2rem;
     margin: 20px 0;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    #project-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
 }
 
