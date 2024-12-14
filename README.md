@@ -100,7 +100,7 @@ A link to the deployed front-end  [BookWish](https://bookwish-crowdfunding.netli
 
 ### Pledge Creation Form
 
-![Screenshot 3](./public/screenshot3.png)
+![pledge_creation](./public/images/screenshots/pledge_creation.gif)
 
 ### Project with Pledges
 

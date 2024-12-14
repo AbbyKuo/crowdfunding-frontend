@@ -4,6 +4,7 @@ import useProject from "../hooks/use-project";
 import postPledge from "../api/post-pledge";
 import Footer from "../components/Footer";
 import "./ProjectPage.css";
+import { formatDate } from "../utils/formatDate";
 
 
 
@@ -49,7 +50,7 @@ function ProjectPage() {
                     <div className="project-title-section">
                         <h2>{project.title}</h2>
                         <div className="project-meta">
-                            <span>Created {project.date_created}</span>
+                            <span>Created {formatDate(project.date_created)}</span>
                             <span className={`project-status ${project.is_open ? 'open' : 'closed'}`}>
                                 {project.is_open ? "Active" : "Closed"}
                             </span>
