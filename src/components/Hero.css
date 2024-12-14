@@ -1,59 +1,75 @@
 /* Hero.css */
 
 .hero-container {
-    background-color: #2c3e50; /* Consistent dark color */
-    color: #f9f9f9; /* Light text color */
-    padding: 50px 20px;
+    position: relative;
+    color: #f9f9f9;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 40vh;
+    min-height: 80vh;
+    margin-top: 60px; /* Space for fixed header */
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
+    filter: brightness(0.4);
+    z-index: -1;
 }
 
 .hero-content {
-    min-width: 450px;
     max-width: 800px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
-    font-family: Arial, sans-serif; /* Consistent font */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
     line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- Media Query for Small Screens --- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .hero-container {
-        padding: 30px 15px;
-        min-height: 50vh;
-    }
-
-    .hero-content {
-        max-width: 90%; /* Reduce width to fit small screens */
-        padding: 15px;
+        min-height: 60vh;
     }
 
     .hero-content h1 {
-        font-size: 2rem; /* Reduce font size for smaller screens */
-        margin-bottom: 15px;
+        font-size: 2.5rem;
     }
 
     .hero-content p {
-        font-size: 1rem; /* Smaller font size for subtitles */
-        margin-bottom: 15px;
+        font-size: 1.2rem;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
     }
 }

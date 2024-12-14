@@ -1,13 +1,37 @@
 /* Header.css */
 .header-container {
-    background-color: #2c3e50; /* Same dark color as Navbar */
-    color: #f9f9f9; /* Light text color */
-    padding: 10px 0;
-    text-align: center;
+    background-color: #2c3e50;
+    color: #f9f9f9;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    text-decoration: none;
+    color: #f9f9f9;
 }
 
 .header-logo h1 {
     margin: 0;
     font-size: 24px;
-    font-family: Arial, sans-serif; /* Consistent font */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 10px 15px;
+    }
 }

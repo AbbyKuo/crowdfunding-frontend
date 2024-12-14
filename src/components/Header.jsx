@@ -1,16 +1,18 @@
 import React from 'react';
 import './Header.css';
 import NavBar from './NavBar'
+import { Link, Outlet } from "react-router-dom";
 
-import { Outlet } from "react-router-dom";
-
-
-function Header () {
+function Header() {
     return (
         <div>
             <header className="header-container">
-                <h1 className="header-logo">BookWish</h1>
-                <NavBar />
+                <div className="header-content">
+                    <Link to="/" className="header-logo">
+                        <h1>BookWish</h1>
+                    </Link>
+                    <NavBar />
+                </div>
             </header>
             <Outlet />
         </div>
