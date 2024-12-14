@@ -20,9 +20,9 @@
     margin: 0 auto;
     max-width: 1200px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 0 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 0 40px;
 }
 
 .project-card {
@@ -35,6 +35,9 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    max-width: 350px;
+    justify-self: center;
+    width: 100%;
 }
 
 .project-card:hover {
@@ -58,10 +61,23 @@
     grid-column: 1 / -1;
 }
 
+@media (max-width: 1200px) {
+    #project-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 0 30px;
+    }
+}
+
 @media (max-width: 768px) {
     #project-list {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 20px;
+    }
+
+    .project-card {
+        max-width: 400px;
     }
 }
 
